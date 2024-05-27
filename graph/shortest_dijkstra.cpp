@@ -1,5 +1,8 @@
 // Dijkstra's algorithm
 //
+// Dijkstra's algorithm finds the shortest path from one vertex to all other vertices. It does so by repeatedly selecting
+// the nearest unvisited vertex and calculating the distance to all the unvisited neighboring vertices.
+//
 // https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 // https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/
 // https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-set-in-stl/

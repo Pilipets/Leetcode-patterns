@@ -1,5 +1,8 @@
 // Kruskal's algorithm
 //
+// Kruskal's algorithm[1] finds a minimum spanning forest of an undirected edge-weighted graph. If the graph is connected, it finds a minimum spanning tree.
+// It is a greedy algorithm that in each step adds to the forest the lowest-weight edge that will not form a cycle.
+//
 // https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
 // https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2
 // https://leetcode.com/problems/min-cost-to-connect-all-points/
