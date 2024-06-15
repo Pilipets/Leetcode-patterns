@@ -49,51 +49,6 @@ private:
 };
 
 
-// STL heap
-//
-class Solution {
-public:
-    int findKthLargest(vector<int>& nums, int k) {
-        // 
-        priority_queue<int, vector<int>, greater<int>> pq;
-        for (int num : nums) {
-            pq.push(num);
-            if (pq.size() > k) {
-                pq.pop();
-            }
-        }
-        return pq.top();
-    }
-};
-
-// STL make_heap, pop_heap, push_heap, sort_heap - push/pop from the end
-//
-int main()
-{
-    print("Max heap");
- 
-    std::vector<int> v{3, 2, 4, 1, 5, 9};
-    print("initially, v", v);
- 
-    std::make_heap(v.begin(), v.end());
-    print("after make_heap, v", v);
- 
-    std::pop_heap(v.begin(), v.end());
-    print("after pop_heap, v", v);
- 
-    auto top = v.back();
-    v.pop_back();
-    print("former top element", {top});
-    print("after removing the former top element, v", v);
-
-    v.push_back(6);
-    println("after push_back: ", v);
- 
-    std::push_heap(v.begin(), v.end());
-    println("after push_heap: ", v);
-}
-
-
 // GeeksForGeeks implementation for Min Heap - root is smallest
 //
 class MinHeap

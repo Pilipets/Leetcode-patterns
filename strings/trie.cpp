@@ -20,10 +20,12 @@ class Trie
     {
         TrieNode* cur = root;
         for(char ch: word){
-            if(!cur->child[ch-'a'])
+            if(cur->child[ch - 'a'] == nullptr)
                 return nullptr;
+
             cur = cur->child[ch-'a'];            
         }
+
         return cur;
     }
 
@@ -78,6 +80,7 @@ private:
 // Build Trie
 // note: using a class is only necessary if you want to store data at each node.
 // otherwise, you can implement a trie using only hash maps.
+//
 struct TrieNode {
     int data;
     unordered_map<char, TrieNode*> children;

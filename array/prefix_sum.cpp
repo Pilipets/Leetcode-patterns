@@ -11,7 +11,8 @@ int fn(vector<int>& arr, int k)
     for (int num: arr)
     {
         // do logic to change curr
-        ans += counts[curr - k];
+        if (counts.count(curr - k))
+            ans += counts[curr - k];
         counts[curr]++;
     }
 
