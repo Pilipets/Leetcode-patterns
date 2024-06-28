@@ -9,13 +9,58 @@
 // - Final amortized time complexity is O(alpha(n)), where alpha(n) is the inverse Ackermann function, which grows very slowly.
 
 
+// https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/
+//
+class Solution {
+    int findSet(vector<int> &p, int i)
+    {
+        while (i != p[i])
+        {
+            i = p[i];
+        }
+        return i;
+    }
+    
+    bool setUnion(vector<int> &p, vector<int> &rank, int i, int j)
+    {
+        i = findSet(p, i);
+        j = findSet(p, j);
+        
+        if (i == j) return false;
+
+        p[j] = i;
+        return true;
+    }
+
+public:
+    int earliestAcq(vector<vector<int>>& logs, int n)
+    {
+        if (logs.size() < n - 1) return -1;
+
+        sort(logs.begin(), logs.end());
+        
+        vector<int> p(n), rank(n);
+        iota(p.begin(), p.end(), 0);
+
+        // connect n-1 edges
+        for (auto &log : logs)
+            if (setUnion(p, rank, log[1], log[2]))
+                if (--n == 1) return log[0];
+        
+        return -1;
+    }
+};
+
+
+// dsu compression + rank
+
 class Solution
 {
     // path compression
     int findSet(int i, vector<int> &p)
     {
         while (p[i] != i) {
-            p[i] = p[p[i]];
+            p[i] = p[p[i]]; // optional if we don't need compression
             i = p[i];
         }
         return i;
@@ -24,7 +69,6 @@ class Solution
     // Union by size / rank
     bool setUnion(int i, int j, vector<int> &p, vector<int> &rank)
     {
-        
         i = findSet(i, p);
         j = findSet(j, p);
         
