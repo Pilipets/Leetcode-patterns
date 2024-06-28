@@ -13,14 +13,15 @@ class Trie
     struct TrieNode
     {
         bool is_word = false;
-        array<TrieNode*, 26> child = {nullptr};
+        unordered_map<ch, TrieNode*> child;
     };
 
     TrieNode* find(const string &word)
     {
         TrieNode* cur = root;
         for(char ch: word){
-            if(cur->child[ch - 'a'] == nullptr)
+            auto it = child.find(ch);
+            if(it == nullptr)
                 return nullptr;
 
             cur = cur->child[ch-'a'];            
@@ -31,7 +32,7 @@ class Trie
 
     void free(TrieNode* cur)
     {
-        for (TrieNode* node : cur->child)
+        for (auto [ch, node] : cur->child)
             if (node)
                 free(node);
         delete cur;
@@ -50,11 +51,13 @@ public:
     void insert(string word)
     {
         TrieNode* cur = root;
-        for(char ch: word){
-            if(!cur->child[ch-'a'])
+        for(char ch: word)
+        {
+            if(!cur->child.count(ch))
                 cur->child[ch-'a'] = new TrieNode();
             cur = cur->child[ch-'a'];            
         }
+
         cur->is_word = true;
     }
     
