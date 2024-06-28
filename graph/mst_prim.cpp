@@ -48,6 +48,8 @@ public:
             used[v] = true;
             res += dist[v];
 
+            // can construct adjacency list and iterate over it
+            //
             for (int u = 0; u < n; ++u)
             {
                 if (used[u]) continue;
