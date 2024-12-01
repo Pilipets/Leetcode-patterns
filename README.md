@@ -51,8 +51,9 @@
 - Palindromic Subsequence(Array, HashTable) - dynamic programming on lps(longest palindromic  1, 2) solve optimization problems related to palindromic sequences or strings;
 - Longest Common Substring(Array, HashTable) - optimal is dynamic programming(1) or less efficient binsearch the length + hashtable with rolling hash(2);
 - K-way merge(Array, Queue, Heap) - solve problems that involve a list of sorted arrays;
-- Math (sieve, log)
+- Math (sieve, log);
 - Bitwise XOR(Array, Bits) - manipulate bits to solve problems, a ^ a = 0;
+- Eulerian Path - build a path problems(domino, etc) converted into graphs where every edge/vertex must be used once.
 
 ### Almost never used data-structures, but fancy:
 - Treap, Rope, Cartesian Tree;

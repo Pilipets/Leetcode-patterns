@@ -7,5 +7,5 @@ tree:
 
 strings:
 - KMP
-- Ranin Karp
+- Rabin Karp
 - Longest Common Substring
