@@ -44,7 +44,7 @@
 // https://leetcode.com/problems/range-sum-query-mutable/
 // Segment tree for range sum query
 //
-class NumArray {
+class SegmentTree {
     int n;
     vector<int> tree;
     
@@ -109,13 +109,15 @@ class NumArray {
         if (left <= l && r <= right)
             return tree[node];
         
+        // range intersects the node
+        // node that if we need to call one subtree only, we need to check if left, right against m.
+        //
         auto [m, lnode, rnode] = getChilds(node, l, r);
-        
         return segmentQuery(lnode, left, right, l, m) + segmentQuery(rnode, left, right, m + 1, r);
     }
 
 public:
-    NumArray(vector<int>& nums) : n(nums.size()), tree(4 * n)
+    SegmentTree(const vector<int>& nums) : n(nums.size()), tree(4 * n)
     {
         segmentBuild(0, nums, 0, n - 1);
     }
@@ -126,6 +128,88 @@ public:
     }
     
     int sumRange(int left, int right)
+    {
+        return segmentQuery(0, left, right, 0, n - 1);
+    }
+};
+
+
+// https://leetcode.com/problems/special-array-ii/
+// The specifics below is that we query for the parity of the elements in the range.
+// See details in segmentQuery. We only call one of subtrees or both as always calling both will break the logic.
+//
+class SegmentTree {
+    int n;
+    vector<int> tree;
+    const vector<int>& nums;
+
+    array<int, 3> getChilds(int node, int l, int r)
+    {
+        int m = l + (r - l) / 2;
+        int lnode = 2 * node + 1, rnode = 2 * node + 2;
+        return {m, lnode, rnode};
+    }
+
+    void segmentMerge(int node, int lnode, int rnode, bool parity)
+    {
+        tree[node] = tree[lnode] && tree[rnode] && parity;
+    }
+
+    void segmentBuild(int node, int l, int r)
+    {
+        if (l == r)
+        {
+            tree[node] = true;
+            return;
+        }
+
+        auto [m, lnode, rnode] = getChilds(node, l, r);
+
+        segmentBuild(lnode, l, m);
+        segmentBuild(rnode, m + 1, r);
+
+        bool parity = (nums[m] & 1) ^ (nums[m + 1] & 1);
+        segmentMerge(node, lnode, rnode, parity);
+    }
+
+    int segmentQuery(int node, int left, int right, int l, int r)
+    {
+        // node doesn't cover range
+        //
+        if (right < l || r < left)
+            return true;
+
+        // node lies in the range
+        //
+        if (left <= l && r <= right)
+            return tree[node];
+
+        // range intersects the node
+        //
+        auto [m, lnode, rnode] = getChilds(node, l, r);
+
+        if (m < left)
+        {
+            return segmentQuery(rnode, left, right, m + 1, r);
+        }
+        else if (right < m + 1)
+        {
+            return segmentQuery(lnode, left, right, l, m);
+        }
+        else
+        {
+            bool parity = (nums[m] & 1) ^ (nums[m + 1] & 1);
+            return parity && segmentQuery(lnode, left, right, l, m) && segmentQuery(rnode, left, right, m + 1, r);
+        }
+    }
+
+public:
+    SegmentTree(vector<int>& nums) : n(nums.size()), tree(4 * n), nums(nums)
+    {
+        segmentBuild(0, 0, n - 1);
+    }
+
+    bool holdsParity(int left, int right)
     {
         return segmentQuery(0, left, right, 0, n - 1);
     }

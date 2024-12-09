@@ -48,8 +48,8 @@
 - 0/1 Knapsack(Array, HashTable) - dynamic programming to solve optimization problems, given a set of items(weight + value), determine the number of each item to include in a collection so that the total weight <= limit and the total value is as large as possible;
 - Subsets(Queue, Array, String) - deal with permutations or combinations of a set of elements;
 - Fibonacci Numbers(Array, HashTable) - every subsequent number is calculated from the last few numbers;
-- Palindromic Subsequence(Array, HashTable) - dynamic programming on lps(longest palindromic  1, 2) solve optimization problems related to palindromic sequences or strings;
-- Longest Common Substring(Array, HashTable) - optimal is dynamic programming(1) or less efficient binsearch the length + hashtable with rolling hash(2);
+- Palindromic Subsequence(Array, HashTable) - dynamic programming on lps(longest palindromic subsequence) or optimization problems like at most k removals;
+- Longest Common Substring(Array, HashTable) - optimal is dynamic programming or less efficient binsearch the length + hashtable with rolling hash;
 - K-way merge(Array, Queue, Heap) - solve problems that involve a list of sorted arrays;
 - Math (sieve, log);
 - Bitwise XOR(Array, Bits) - manipulate bits to solve problems, a ^ a = 0;
