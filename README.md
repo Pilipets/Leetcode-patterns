@@ -28,7 +28,7 @@
 
 ### Best Data Structures:
 - Hash Table;
-- Prefix sum - result over range. For example, f(l, r) = prefix[r] - prefix[l];
+- Prefix sum - result over range. For example, f(l, r) = prefix[r] - prefix[l]
 - Heap(Priority Queue, Binary);
 - Trie(Prefix Tree, Strings Tree);
 - DSU(Disjoint Set Data-structure);
