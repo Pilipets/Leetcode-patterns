@@ -38,7 +38,7 @@
 - Segment Tree(Fenwick Tree or Binary Indexed Tree/BIT);
 
 ### Extended problem patterns:
-- Monotonic Stack;
+- Monotonic Stack - Next/Previous greater/smaller element in an array;
 - Islands(Matrix, Queue) - flood fill, efficient way of traversing traversing a matrix or 2d array;
 - Merge intervals(Arrays, Heap) - deal with overlapping intervals;
 - Topological Sort (Array, HashTable, Queue, Graph) - linear ordering of elements that have dependencies on each other;
