@@ -1,4 +1,8 @@
 tree:
+- sparse tree - https://leetcode.com/discuss/interview-question/4150473/what-the-heck-is-Sparse-Table
+A sparse table is a data structure used for efficient range queries on an array of values, particularly when dealing with static data (data that does not change). It is commonly used to answer range minimum/maximum queries, but it can be adapted for other types of range queries as well.
+https://leetcode.com/problems/number-of-valid-subarrays/
+
 - AVL
 // https://www.guru99.com/avl-tree.html
 // https://www.geeksforgeeks.org/insertion-in-an-avl-tree/
