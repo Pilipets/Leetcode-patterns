@@ -53,7 +53,10 @@
 - K-way merge(Array, Queue, Heap) - solve problems that involve a list of sorted arrays;
 - Math (sieve, log);
 - Bitwise XOR(Array, Bits) - manipulate bits to solve problems, a ^ a = 0;
+
+### Hard problems:
 - Eulerian Path - build a path problems(domino, etc) converted into graphs where every edge/vertex must be used once.
+- Rerooting - two dfs traversals: dfs1 takes results from childs to root, while dfs2 from root to childs.
 
 ### Almost never used data-structures, but fancy:
 - Treap, Rope, Cartesian Tree;
